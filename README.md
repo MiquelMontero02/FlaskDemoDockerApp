@@ -10,7 +10,7 @@
 5. Crear un archivo .env similar al siguiente
    >```yaml
    >DATABASE_HOST=localhost
-   >DATABASE_PORT=3307
+   >DATABASE_PORT=3306 #Puede que tengais el 3307!
    >DATABASE_NAME=test_db
    >DATABASE_USER=root
    >DATABASE_PASSWORD=12345678
