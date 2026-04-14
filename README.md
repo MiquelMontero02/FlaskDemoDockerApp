@@ -1,3 +1,6 @@
+# Requisitos
+- Tener una base de datos activa de MySQL
+> Si teneis instalado MySQL Workbench cy lo habeis utilizado, ya lo teneis creado
 # Instrucciones de instalación
 1. Clona este repositorio haciendo uso de git clone
    >```git clone https://github.com/MiquelMontero02/FlaskDemoDockerApp```
@@ -11,7 +14,7 @@
    >```yaml
    >DATABASE_HOST=localhost
    >DATABASE_PORT=3306 #Puede que tengais el 3307!
-   >DATABASE_NAME=test_db
+   >DATABASE_NAME=test_db # Indicadle aquí el nombre de vuestra base de datos
    >DATABASE_USER=root
    >DATABASE_PASSWORD=12345678
    >```
