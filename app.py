@@ -21,7 +21,7 @@ def init_mySQL():
     except connector.Error as e:
         print(f"Error while connecting to MySQL: {e}")
 
-def exec_query(query, params=None):
+def exec_query(query, params=None, fetch=False):
     connection = init_mySQL()
     if connection:
         cursor = connection.cursor(buffered=True)
@@ -31,12 +31,14 @@ def exec_query(query, params=None):
             else:
                 cursor.execute(query)
             connection.commit()
-            return cursor
+            if fetch:
+                return cursor.fetchall()
         except connector.Error as e:
             print(f"Error executing query: {e}")
         finally:
             cursor.close()
             connection.close()
+    return Exception("No hay conexion")
 
 def config_mySQL():
     QUERY='''CREATE TABLE IF NOT EXISTS Customer (
@@ -53,10 +55,8 @@ def index():
 @app.route("/customers")
 def get_customers():
     QUERY = "SELECT id, name FROM Customer"
-    cursor = exec_query(QUERY)
-    customers = cursor.fetchall()
+    customers = exec_query(QUERY, fetch=True)
     return "<br>".join([f"ID: {id}, Name: {name}" for id, name in customers])
-
 
 @app.route("/insert")
 def insert_into_ddb():
